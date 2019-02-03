@@ -1,11 +1,14 @@
 <template>
   <div>
     <div class="ui secondary pointing menu">
-      <a class="active item" href="/"> Imgurly {{ isLoggedIn }} </a>
+      <a class="active item" href="/"> Imgurly </a>
       <div class="right menu">
-        <div v-if="isLoggedIn">
-          <a @click="showAlbums" class="ui item">
-            Albums
+        <div v-if="isLoggedIn" class="horizontal">
+          <a @click="viewGalleries" class="item">
+            Galleries
+          </a>
+          <a @click="upload" class="item">
+            Upload
           </a>
           <a @click="logout" class="ui item">
             Log Out
@@ -33,9 +36,13 @@ export default {
   },
   methods: {
     // syntax below alows for additions methods to be added
-    ...mapActions(["login"])
+    ...mapActions(["login", "logout"])
   }
 };
 </script>
 
-<style scoped></style>
+<style scoped>
+.horizontal {
+  display: flex;
+}
+</style>
